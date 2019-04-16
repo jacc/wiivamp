@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>entry</key>
+	<dict>
+		<key>cell</key>
+		<string>PSLinkCell</string>
+		<key>icon</key>
+		<string>WiivampTV.png</string>
+		<key>label</key>
+		<string>WiivampTV</string>
+		<key>description</key>
+		<string>Turn your AppleTV into a Wii!</string>
+	</dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>us.diatr.WiivampTV</string>
+			<key>key</key>
+			<string>NitoTVEnabled</string>
+			<key>label</key>
+			<string>NitoTV</string>
+			<key>description</key>
+			<string>Enable the Homebrew Channel music in NitoTV.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>us.diatr.WiivampTV</string>
+			<key>key</key>
+			<string>TVAppStoreEnabled</string>
+			<key>label</key>
+			<string>AppStore</string>
+			<key>description</key>
+			<string>Enable the Wii Shop music in the AppStore.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>us.diatr.WiivampTV</string>
+			<key>key</key>
+			<string>TVPhotosEnabled</string>
+			<key>label</key>
+			<string>Photos</string>
+			<key>description</key>
+			<string>Enable the Wii Photos music in Photos.</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string>WiivampTV</string>
+</dict>
+</plist>

@@ -1,0 +1,9 @@
+Package: us.diatr.wiivamptv
+Name: WiivampTV
+Depends: mobilesubstrate, preferenceloader
+Version: 1.0b1
+Architecture: appletvos-arm64
+Description: Play your favorite Wii songs inside your apps! A rewrite for the AppleTV of Wiivamp by Jack.
+Maintainer: Diatrus
+Author: Diatrus
+Section: Tweaks
