@@ -4,6 +4,7 @@ Depends: mobilesubstrate, preferenceloader
 Version: 1.0b2
 Architecture: appletvos-arm64
 Description: Play your favorite Wii songs inside your apps! A rewrite for the AppleTV of Wiivamp by Jack.
+Depiction: https://diatr.us/nito/depictions/wiivamptv/wiivamptv.json
 Maintainer: Diatrus
 Author: Diatrus
 Section: Tweaks
