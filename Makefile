@@ -3,7 +3,6 @@ export TARGET = appletv:clang:11.3:11.3
 export SYSROOT = $(THEOS)/sdks/AppleTVOS11.3.sdk
 export THEOS_DEVICE_IP=192.168.1.137
 export FINALPACKAGE = 1
-export DEBUG = 0
 include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = WiivampTV

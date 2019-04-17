@@ -1,0 +1,8 @@
+#!/bin/bash
+if [ ! -d "/Library/Frameworks/CydiaSubstrate.framework/CydiaSubstrate" ]; then
+	if [ ! -d "/Library/Frameworks/CydiaSubstrate.framework/" ]; then
+	  mkdir /Library/Frameworks/CydiaSubstrate.framework/
+	fi
+	ln -s /usr/lib/libsubstrate.dylib /Library/Frameworks/CydiaSubstrate.framework/CydiaSubstrate
+fi
+finish:restart
