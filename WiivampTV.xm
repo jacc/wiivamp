@@ -4,8 +4,6 @@
 
 #define SETTINGS_PLIST_PATH @"/var/mobile/Library/Preferences/us.diatr.WiivampTV.plist"
 
-%config(generator=internal);
-
 NSDictionary *WiivampTVPrefs = [[[NSDictionary alloc] initWithContentsOfFile:SETTINGS_PLIST_PATH]?:[NSDictionary dictionary] copy];
 NSBundle *audio = [NSBundle bundleWithPath:@"/Library/Application Support/WiivampTV/"];
 AVQueuePlayer *songPlayer = [[AVQueuePlayer alloc] init];
