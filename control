@@ -1,7 +1,7 @@
 Package: com.jacc.wiivamp
 Name: Wiivamp
 Depends: mobilesubstrate, com.spark.libsparkapplist, ws.hbang.common (>= 1.11)
-Version: 3.1.0
+Version: 3.2
 Architecture: iphoneos-arm
 Description: Play your favorite Wii songs inside any of your favorite apps!
 Maintainer: jacc
