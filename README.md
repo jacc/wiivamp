@@ -2,7 +2,7 @@
 🎼 Play the classic Wii channel music inside your favorite apps on iOS and tvOS!
 
 
-## Contributiors
+## Contributors
 
 - [jacc](https://jacc.host) - original developer
 - [MidnightChips](https://github.com/midnightchip) - helped with original source code + bug ironing
