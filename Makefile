@@ -7,6 +7,7 @@ include $(THEOS)/makefiles/common.mk
 TWEAK_NAME = Wiivamp
 Wiivamp_FILES = Tweak.xm
 Wiivamp_LIBRARIES = sparkapplist
+Wiivamp_CFLAGS = -fobjc-arc
 Wiivamp_EXTRA_FRAMEWORKS += Cephei
 
 include $(THEOS_MAKE_PATH)/tweak.mk
