@@ -31,7 +31,6 @@ static BOOL PreferencesValue(NSString* key, BOOL fallback)
 }
 
 static void PreferencesChangedCallback(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo) {
-    [preferences release];
     CFStringRef appID = CFSTR("com.jacc.wiiprefs");
     CFArrayRef keyList = CFPreferencesCopyKeyList(appID, kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
     if (!keyList) {
