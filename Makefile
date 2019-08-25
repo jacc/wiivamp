@@ -3,7 +3,6 @@ include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = WiivampTV
 WiivampTV_FILES = WiivampTV.xm
-WiivampTV_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 include $(THEOS_MAKE_PATH)/aggregate.mk
