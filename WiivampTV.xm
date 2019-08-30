@@ -6,46 +6,90 @@ NSBundle *audioPath = [NSBundle bundleWithPath:@"/Library/Application Support/Wi
 static BOOL TVAppStoreEnabled = (BOOL)[[WiivampTVPrefs objectForKey:@"TVAppStoreEnabled"]?:@YES boolValue];
 static BOOL NitoTVEnabled = (BOOL)[[WiivampTVPrefs objectForKey:@"NitoTVEnabled"]?:@YES boolValue];
 static BOOL TVPhotosEnabled = (BOOL)[[WiivampTVPrefs objectForKey:@"TVPhotosEnabled"]?:@YES boolValue];
+static BOOL PineBoardEnabled = (BOOL)[[WiivampTVPrefs objectForKey:@"PineBoardEnabled"]?:@YES boolValue];
 BOOL hasPlayedAppStore = NO;
 BOOL hasPlayedNitoTV = NO;
 BOOL hasPlayedPhotos = NO;
+BOOL hasPlayedPineBoard = NO;
 
-// HBLogInfo(@"###WiivampTVPrefs: %@", WiivampPrefs);
+#ifdef DEBUG
+    #define DEBUGLOG(...) NSLog(__VA_ARGS__);
+#else
+    #define DEBUGLOG(...) {}
+#endif
 
 %hook UIViewController
--(void)viewDidAppear:(BOOL)arg1 {
+- (void)viewDidAppear:(BOOL)arg1 {
     %orig;
+    DEBUGLOG(@"###WiivampTVPrefs: %@", WiivampTVPrefs);
+    DEBUGLOG(@"###WiivampTV: Main Bundle Identifier: %@", [[NSBundle mainBundle] bundleIdentifier]);
+
     if([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.apple.TVAppStore"] && TVAppStoreEnabled && !hasPlayedAppStore) {
-        [self playSong:@"store"];
+        [self playSong:@"shop" restartTime:CMTimeMake(7, 1)];
         hasPlayedAppStore = YES;
     }
 
     if([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.nito.nitoTV4"] && NitoTVEnabled && !hasPlayedNitoTV) {
-        [self playSong:@"hbc"];
-        hasPlayedNitoTV = YES;    
-    }     
+        [self playSong:@"hbc" restartTime:CMTimeMake(8, 1)];
+        hasPlayedNitoTV = YES; 
+    }
 
     if([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.apple.TVPhotos"] && TVPhotosEnabled && !hasPlayedPhotos) {
-        [self playSong:@"photos"];
+        [self playSong:@"photos" restartTime:CMTimeMake(10, 1)];
         hasPlayedPhotos = YES;  
+    }
+
+    if([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.apple.HeadBoard"] && PineBoardEnabled && !hasPlayedPineBoard) {
+        [self playSong:@"mainmenu" restartTime:CMTimeMake(20, 1)];
+        hasPlayedPineBoard = YES;
     }
 }
 %new
--(void)playSong:(NSString *)songName {
-    // NSLog(@"###WiivampTV: Playing audio: %@", songName);
-    AVPlayerItem *song = [AVPlayerItem playerItemWithURL:[audioPath URLForResource:songName withExtension:@"mp3"]];
+- (void)playSong:(NSString *)songName restartTime:(CMTime)time {
+    NSString *bundle = [[NSBundle mainBundle] bundleIdentifier];
+    DEBUGLOG(@"###WiivampTV: Playing audio: %@", songName);
+    AVPlayerItem *song = [AVPlayerItem playerItemWithURL:[audioPath URLForResource:songName withExtension:@"m4a"]];
     AVPlayer *songPlayer = [[AVPlayer alloc] initWithPlayerItem:song];
     songPlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(itemDidFinishPlaying:)
-                                               name:AVPlayerItemDidPlayToEndTimeNotification
-                                             object:[songPlayer currentItem]];
+    NSNotificationCenter *noteCenter = [NSNotificationCenter defaultCenter];
+    [noteCenter addObserverForName:AVPlayerItemDidPlayToEndTimeNotification 
+                                                    object:[songPlayer currentItem] 
+                                                    queue:nil 
+                                                    usingBlock:^(NSNotification *note) {
+                                                        [song seekToTime:time];
+                                                    }];
+
+    [noteCenter addObserverForName:UIApplicationDidEnterBackgroundNotification 
+                                                    object:nil
+                                                    queue:nil 
+                                                    usingBlock:^(NSNotification *note) {
+                                                        DEBUGLOG(@"###WiivampTV: %@ did enter background!", bundle);
+                                                        [songPlayer pause];
+                                                    }];
+
+    [noteCenter addObserverForName:UIApplicationWillEnterForegroundNotification 
+                                                    object:nil
+                                                    queue:nil 
+                                                    usingBlock:^(NSNotification *note) {
+                                                        DEBUGLOG(@"###WiivampTV: %@ did enter foreground!", bundle);
+                                                        usleep(1000000);
+                                                        [songPlayer play];
+                                                    }];
+
+    [noteCenter addObserverForName:UIApplicationWillTerminateNotification 
+                                                    object:nil
+                                                    queue:nil 
+                                                    usingBlock:^(NSNotification *note) {
+                                                        [songPlayer release];
+                                                        DEBUGLOG(@"###WiivampTV: Released from %@!", bundle);
+                                                    }];
+                                                    
     songPlayer.volume = 0.3;
+    usleep(1000000);
     [songPlayer play];
-} 
+}
 %new
-- (void)itemDidFinishPlaying:(NSNotification *)notification {
-    AVPlayerItem *item = [notification object];
-    [item seekToTime:kCMTimeZero];
+-(void)killPineBoard {
+    system("killall -9 PineBoard");
 }
 %end

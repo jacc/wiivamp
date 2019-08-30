@@ -61,6 +61,30 @@
 			<key>description</key>
 			<string>Enable the Wii Photos music in Photos.</string>
 		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>us.diatr.WiivampTV</string>
+			<key>key</key>
+			<string>PineBoardEnabled</string>
+			<key>label</key>
+			<string>Homescreen</string>
+			<key>description</key>
+			<string>Enable the Wii homescreen music on the homescreen.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>action</key>
+			<string>killPineBoard</string>
+			<key>label</key>
+			<string>Apply Settings</string>
+			<key>description</key>
+			<string>Applies your settings.</string>
+		</dict>
 	</array>
 	<key>title</key>
 	<string>WiivampTV</string>
