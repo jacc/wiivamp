@@ -79,7 +79,7 @@
 			<key>cell</key>
 			<string>PSButtonCell</string>
 			<key>action</key>
-			<string>killBackboardd</string>
+			<string>relaunchBackboardd</string>
 			<key>label</key>
 			<string>Apply Settings</string>
 		</dict>
