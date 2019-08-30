@@ -46,7 +46,6 @@ BOOL hasPlayedPineBoard = NO;
 }
 %new
 - (void)playSong:(NSString *)songName restartTime:(CMTime)time {
-    NSString *bundle = [[NSBundle mainBundle] bundleIdentifier];
     DEBUGLOG(@"###WiivampTV: Playing audio: %@", songName);
     AVPlayerItem *song = [AVPlayerItem playerItemWithURL:[audioPath URLForResource:songName withExtension:@"m4a"]];
     AVPlayer *songPlayer = [[AVPlayer alloc] initWithPlayerItem:song];
@@ -63,7 +62,7 @@ BOOL hasPlayedPineBoard = NO;
                                                     object:nil
                                                     queue:nil 
                                                     usingBlock:^(NSNotification *note) {
-                                                        DEBUGLOG(@"###WiivampTV: %@ did enter background!", bundle);
+                                                        DEBUGLOG(@"###WiivampTV: %@ did enter background!", [[NSBundle mainBundle] bundleIdentifier]);
                                                         [songPlayer pause];
                                                     }];
 
@@ -71,7 +70,7 @@ BOOL hasPlayedPineBoard = NO;
                                                     object:nil
                                                     queue:nil 
                                                     usingBlock:^(NSNotification *note) {
-                                                        DEBUGLOG(@"###WiivampTV: %@ did enter foreground!", bundle);
+                                                        DEBUGLOG(@"###WiivampTV: %@ did enter foreground!", [[NSBundle mainBundle] bundleIdentifier]);
                                                         usleep(1000000);
                                                         [songPlayer play];
                                                     }];
@@ -81,7 +80,7 @@ BOOL hasPlayedPineBoard = NO;
                                                     queue:nil 
                                                     usingBlock:^(NSNotification *note) {
                                                         [songPlayer release];
-                                                        DEBUGLOG(@"###WiivampTV: Released from %@!", bundle);
+                                                        DEBUGLOG(@"###WiivampTV: Released from %@!", [[NSBundle mainBundle] bundleIdentifier]);
                                                     }];
                                                     
     songPlayer.volume = 0.3;
