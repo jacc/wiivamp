@@ -79,11 +79,9 @@
 			<key>cell</key>
 			<string>PSButtonCell</string>
 			<key>action</key>
-			<string>killPineBoard</string>
+			<string>killBackboardd</string>
 			<key>label</key>
 			<string>Apply Settings</string>
-			<key>description</key>
-			<string>Applies your settings.</string>
 		</dict>
 	</array>
 	<key>title</key>

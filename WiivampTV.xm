@@ -87,8 +87,4 @@ BOOL hasPlayedPineBoard = NO;
     usleep(1000000);
     [songPlayer play];
 }
-%new
--(void)killPineBoard {
-    system("killall -9 PineBoard");
-}
 %end
