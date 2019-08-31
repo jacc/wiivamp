@@ -2,15 +2,8 @@
 // Twitter: twitter.com/jvvks
 // Github: github.com/jacc
 
-@import Foundation;
-@import UIKit;
-@import AVFoundation;
-#import <SparkAppList.h>
+#import "Wiivamp.h"
 
-#define SETTINGS_PLIST_PATH @"/var/mobile/Library/Preferences/com.jacc.wiiprefs.plist"
-
-AVQueuePlayer *songPlayer = [[AVQueuePlayer alloc] init];
-AVPlayerLooper *songLooper;
 NSBundle *audio = [NSBundle bundleWithPath:@"/Library/Application Support/Wiivamp/"];
 
 BOOL hasPlayedApp = NO;
@@ -23,6 +16,12 @@ BOOL hasPlayedHealth = NO;
 BOOL hasPlayedHomeScreen = NO;
 BOOL hasPlayedFMF = NO;
 
+#ifdef DEBUG
+    #define DEBUGLOG(...) NSLog(__VA_ARGS__);
+#else
+    #define DEBUGLOG(...) {}
+#endif
+
 static NSDictionary *preferences;
 
 static BOOL PreferencesValue(NSString* key, BOOL fallback)
@@ -34,32 +33,26 @@ static void PreferencesChangedCallback(CFNotificationCenterRef center, void *obs
     CFStringRef appID = CFSTR("com.jacc.wiiprefs");
     CFArrayRef keyList = CFPreferencesCopyKeyList(appID, kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
     if (!keyList) {
-        NSLog(@"There's been an error getting the key list!");
+        DEBUGLOG(@"There's been an error getting the key list!");
         return;
     }
     preferences = (NSDictionary *)CFPreferencesCopyMultiple(keyList, appID, kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
     if (!preferences) {
-        NSLog(@"There's been an error getting the preferences dictionary!");
+        DEBUGLOG(@"There's been an error getting the preferences dictionary!");
     }
     CFRelease(keyList);
 }
-
 
 %hook UIViewController
 -(void)viewDidAppear:(BOOL)arg1 {
     %orig;
 
-    if([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"storeApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && PreferencesValue(@"ENABLE_APPSTORE",YES)) {
-        AVPlayerItem *song = [AVPlayerItem playerItemWithURL:[audio URLForResource:@"store" withExtension:@"mp3"]];
-        if (!hasPlayedApp) {
-            songLooper = [[AVPlayerLooper alloc] initWithPlayer:songPlayer templateItem:song timeRange:kCMTimeRangeInvalid];
-            songPlayer.volume = 0.3;
-            [songPlayer play];
-            hasPlayedApp = YES;
-        }
+    if([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"storeApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && PreferencesValue(@"ENABLE_APPSTORE",YES) && !hasPlayedApp) {
+        [self playSong:@"shop" restartTime:CMTimeMake(7, 1)];
+        hasPlayedApp = YES;
     }
 
-     if([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"weatherApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && PreferencesValue(@"ENABLE_WEATHER",YES)) {
+     if([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"weatherApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && PreferencesValue(@"ENABLE_WEATHER",YES) && !hasPlayedWeather) {
          AVPlayerItem *song = [AVPlayerItem playerItemWithURL:[audio URLForResource:@"wcm" withExtension:@"mp3"]];
         if (!hasPlayedWeather) {
             songLooper = [[AVPlayerLooper alloc] initWithPlayer:songPlayer templateItem:song timeRange:kCMTimeRangeInvalid];
@@ -69,27 +62,17 @@ static void PreferencesChangedCallback(CFNotificationCenterRef center, void *obs
         }
      }
 
-     if([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"homebrewApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && PreferencesValue(@"ENABLE_CYDIA",YES)) {
-         AVPlayerItem *song = [AVPlayerItem playerItemWithURL:[audio URLForResource:@"hbc" withExtension:@"mp3"]];
-        if (!hasPlayedCydia) {
-            songLooper = [[AVPlayerLooper alloc] initWithPlayer:songPlayer templateItem:song timeRange:kCMTimeRangeInvalid];
-            songPlayer.volume = 0.3;
-            [songPlayer play];
-            hasPlayedCydia = YES;
-        }
+     if([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"homebrewApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && PreferencesValue(@"ENABLE_CYDIA",YES) && !hasPlayedCydia) {
+        [self playSong:@"hbc" restartTime:CMTimeMake(8, 1)];
+        hasPlayedCydia = YES;
      }
 
-     if([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"photoApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && PreferencesValue(@"ENABLE_PHOTOS",YES)) {
-        AVPlayerItem *song = [AVPlayerItem playerItemWithURL:[audio URLForResource:@"photo" withExtension:@"mp3"]];
-        if (!hasPlayedPhotos) {
-            songLooper = [[AVPlayerLooper alloc] initWithPlayer:songPlayer templateItem:song timeRange:kCMTimeRangeInvalid];
-            songPlayer.volume = 0.3;
-            [songPlayer play];
-            hasPlayedPhotos = YES;
-        }
+     if([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"photoApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && PreferencesValue(@"ENABLE_PHOTOS",YES) && !hasPlayedPhotos) {
+        [self playSong:@"photos" restartTime:CMTimeMake(10, 1)];
+        hasPlayedPhotos = YES;
      }
 
-     if([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"newsApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && PreferencesValue(@"ENABLE_NEWS",YES)) {
+     if([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"newsApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && PreferencesValue(@"ENABLE_NEWS",YES) && !hasPlayedNews) {
          AVPlayerItem *song = [AVPlayerItem playerItemWithURL:[audio URLForResource:@"news" withExtension:@"mp3"]];
         if (!hasPlayedNews) {
             songLooper = [[AVPlayerLooper alloc] initWithPlayer:songPlayer templateItem:song timeRange:kCMTimeRangeInvalid];
@@ -99,7 +82,7 @@ static void PreferencesChangedCallback(CFNotificationCenterRef center, void *obs
         }
      }
 
-     if([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"contactApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && PreferencesValue(@"ENABLE_CONTACTS",YES)) {
+     if([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"contactApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && PreferencesValue(@"ENABLE_CONTACTS",YES) && !hasPlayedContacts) {
         AVPlayerItem *song = [AVPlayerItem playerItemWithURL:[audio URLForResource:@"mii" withExtension:@"mp3"]];
         if (!hasPlayedContacts) {
             songLooper = [[AVPlayerLooper alloc] initWithPlayer:songPlayer templateItem:song timeRange:kCMTimeRangeInvalid];
@@ -109,7 +92,7 @@ static void PreferencesChangedCallback(CFNotificationCenterRef center, void *obs
         }
      }
 
-     if([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"healthApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && PreferencesValue(@"ENABLE_HEALTH",YES)) {
+     if([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"healthApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && PreferencesValue(@"ENABLE_HEALTH",YES) && !hasPlayedHealth) {
         AVPlayerItem *song = [AVPlayerItem playerItemWithURL:[audio URLForResource:@"yoga" withExtension:@"mp3"]];
         if (!hasPlayedHealth) {
             songLooper = [[AVPlayerLooper alloc] initWithPlayer:songPlayer templateItem:song timeRange:kCMTimeRangeInvalid];
@@ -119,7 +102,7 @@ static void PreferencesChangedCallback(CFNotificationCenterRef center, void *obs
         }
      }
 
-     if([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"friendsApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && PreferencesValue(@"ENABLE_FMF",YES)) {
+     if([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"friendsApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && PreferencesValue(@"ENABLE_FMF",YES) && !hasPlayedFMF) {
         AVPlayerItem *song = [AVPlayerItem playerItemWithURL:[audio URLForResource:@"checkmii" withExtension:@"mp3"]];
         if (!hasPlayedFMF) {
             songLooper = [[AVPlayerLooper alloc] initWithPlayer:songPlayer templateItem:song timeRange:kCMTimeRangeInvalid];
@@ -130,30 +113,59 @@ static void PreferencesChangedCallback(CFNotificationCenterRef center, void *obs
      }
 
      /* this plays in every app, fix later
-     NSString *sb = @"/Library/Application Support/Wiivamp/menu.mp3";
-     NSURL *sbURL = [NSURL fileURLWithPath:sb];
-     if([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.apple.springboard"] && PreferencesValue(@"ENABLE_MENU",YES)) {
-         if (!hasPlayedHomeScreen) {
-             AVPlayer *songPlayer = [[AVPlayer alloc] initWithURL:sbURL];
-             songPlayer.volume = 0.3;
-             [songPlayer play];
-             hasPlayedHomeScreen = YES;
-             songPlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
-             [[NSNotificationCenter defaultCenter] addObserver:self
-                                            selector:@selector(playerItemDidReachEnd:)
-                                                name:AVPlayerItemDidPlayToEndTimeNotification
-                                              object:[songPlayer currentItem]];
-         }
+     if([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.apple.springboard"] && PreferencesValue(@"ENABLE_MENU",YES) && !hasPlayedHomeScreen) {
+        [self playSong:@"mainmenu" restartTime:CMTimeMake(20, 1)];
+        hasPlayedHomeScreen = YES;
      } */
 
 }
+%new
+- (void)playSong:(NSString *)songName restartTime:(CMTime)time {
+    DEBUGLOG(@"###Wiivamp: Playing audio: %@", songName);
+    AVPlayerItem *song = [AVPlayerItem playerItemWithURL:[audioPath URLForResource:songName withExtension:@"m4a"]];
+    AVPlayer *songPlayer = [[AVPlayer alloc] initWithPlayerItem:song];
+    songPlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+    NSNotificationCenter *noteCenter = [NSNotificationCenter defaultCenter];
+    [noteCenter addObserverForName:AVPlayerItemDidPlayToEndTimeNotification 
+                                                    object:[songPlayer currentItem] 
+                                                    queue:nil 
+                                                    usingBlock:^(NSNotification *note) {
+                                                        [song seekToTime:time];
+                                                    }];
+
+    [noteCenter addObserverForName:UIApplicationDidEnterBackgroundNotification 
+                                                    object:nil
+                                                    queue:nil 
+                                                    usingBlock:^(NSNotification *note) {
+                                                        DEBUGLOG(@"###Wiivamp: %@ did enter background!", [[NSBundle mainBundle] bundleIdentifier]);
+                                                        [songPlayer pause];
+                                                    }];
+
+    [noteCenter addObserverForName:UIApplicationWillEnterForegroundNotification 
+                                                    object:nil
+                                                    queue:nil 
+                                                    usingBlock:^(NSNotification *note) {
+                                                        DEBUGLOG(@"###Wiivamp: %@ did enter foreground!", [[NSBundle mainBundle] bundleIdentifier]);
+                                                        usleep(1000000);
+                                                        [songPlayer play];
+                                                    }];
+
+    [noteCenter addObserverForName:UIApplicationWillTerminateNotification 
+                                                    object:nil
+                                                    queue:nil 
+                                                    usingBlock:^(NSNotification *note) {
+                                                        [songPlayer release];
+                                                        DEBUGLOG(@"###Wiivamp: Released from %@!", [[NSBundle mainBundle] bundleIdentifier]);
+                                                    }];
+                                                    
+    songPlayer.volume = 0.3;
+    usleep(1000000);
+    [songPlayer play];
+}
 %end
-
-
-
 %ctor
 {
     preferences = [[NSDictionary alloc] initWithContentsOfFile:SETTINGS_PLIST_PATH];
 
-    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)PreferencesChangedCallback, CFSTR("com.muirey03.wiiprefs-reload"), NULL, CFNotificationSuspensionBehaviorCoalesce);
+    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)PreferencesChangedCallback, CFSTR("com.jacc.wiiprefs-reload"), NULL, CFNotificationSuspensionBehaviorCoalesce);
 }
