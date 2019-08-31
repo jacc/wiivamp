@@ -4,8 +4,7 @@
 
 ## Contributors
 
-- [jacc](https://jacc.host) - original developer
-- [MidnightChips](https://github.com/midnightchip) - helped with original source code + bug ironing
+- [jacc](https://lafond.dev) - original developer
 - [Diatrus](https://diatr.us) - wrote entire tvOS port, improved audio player for iOS and tvOS.
 
 ## Compiling
