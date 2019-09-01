@@ -1,3 +1,5 @@
+[!][https://github.com/jacc/wiivamp/blob/master/assets/Wiivamp%204.0%20Banner.png?raw=true]
+
 # Wiivamp
 🎼 Play the classic Wii channel music inside your favorite apps on iOS and tvOS!
 
