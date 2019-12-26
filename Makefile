@@ -1,9 +1,13 @@
-export ARCHS = arm64e arm64
+ARCHS = arm64e arm64
+TARGET = iphone:clang:13.2:13.2
+
+GO_EASY_ON_ME = 1
 
 include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = Wiivamp
 Wiivamp_FILES = Wiivamp.xm
+Wiivamp_FRAMEWORKS = UIKit
 Wiivamp_LIBRARIES = sparkapplist
 Wiivamp_EXTRA_FRAMEWORKS += Cephei
 
