@@ -3,17 +3,13 @@
 # Wiivamp
 🎼 Play the classic Wii channel music inside your favorite apps on iOS and tvOS!
 
-
 ## Contributors
 
 - [jacc](https://lafond.dev) - original developer
 - [Diatrus](https://diatr.us) - wrote entire tvOS port, improved audio player for iOS and tvOS.
+- [ShyMemoriees](https://shymemoriees.me) - updated the tweak with cephei preferences and fixed the iOS 13 respring loop for some users. (Also code cleanup)
 
 ## Compiling
 
 If you have Theos installed, a simple `make package` should make the package. All files are included.
-
-## FAQ
-
-### What is the 'yeet' folder?
-Preferences. When Chips and I were originally making it, I named it `yeet` as a joke, not realizing that I was eventually going to release and open source this. I'm much too lazy to rework it with a proper preference name.
+Also make sure to have libsparkapplist installed in your theos directory.
