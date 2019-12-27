@@ -27,8 +27,10 @@ BOOL mainMenuMusicSwitch = YES;
 // Audio Players
 AVPlayer* songPlayer;
 AVPlayerLooper* songLooper;
-
 AVAudioPlayer *songPlayer2;
+// Custom volume
+BOOL customVolumeSwitch = NO;
+NSString* volumeLevel = @"0.3";
 
 BOOL hasPlayedApp = NO;
 BOOL hasPlayedWeather = NO;

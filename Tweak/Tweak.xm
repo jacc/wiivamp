@@ -164,7 +164,17 @@ double currentAudioPosition;
     if (mainMenuMusicSwitch) {
         [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:NULL];
         songPlayer2 = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:@"/Library/Wiivamp/mainmenu.mp3"] error:nil];
-        songPlayer2.volume = 0.3;
+        
+        double volume = [volumeLevel doubleValue];
+        if (customVolumeSwitch) {
+            songPlayer2.volume = volume;
+
+        } else {
+            songPlayer2.volume = 0.3;
+
+        }
+        
+        songPlayer2.numberOfLoops = 999;
         if (!hasPlayedHomeScreen) {
             [songPlayer2 play];
             hasPlayedHomeScreen = YES;
@@ -246,6 +256,9 @@ double currentAudioPosition;
     [pfs registerBool:&ENABLE_HEALTHSwitch default:YES forKey:@"ENABLE_HEALTH"];
     [pfs registerBool:&ENABLE_FMFSwitch default:YES forKey:@"ENABLE_FMF"];
     [pfs registerBool:&mainMenuMusicSwitch default:YES forKey:@"mainMenuMusic"];
+    // Custom Volume
+    [pfs registerBool:&customVolumeSwitch default:NO forKey:@"customVolume"];
+    [pfs registerObject:&volumeLevel default:@"0.3" forKey:@"Volume"];
 
 	if (!dpkgInvalid && enabled) {
         BOOL ok = false;
