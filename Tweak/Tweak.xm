@@ -1,6 +1,7 @@
 #import "Wiivamp.h"
 
 NSBundle *audio = [NSBundle bundleWithPath:@"/Library/Wiivamp/"];
+double volume = [volumeLevel doubleValue];
 
 %group Wiivamp13
 
@@ -20,7 +21,6 @@ NSBundle *audio = [NSBundle bundleWithPath:@"/Library/Wiivamp/"];
 
         if (!hasPlayedWeather) {
             songLooper = [[AVPlayerLooper alloc] initWithPlayer:songPlayer templateItem:song timeRange:kCMTimeRangeInvalid];
-            songPlayer.volume = 0.3;
             [songPlayer play];
             hasPlayedWeather = YES;
 
@@ -45,7 +45,6 @@ NSBundle *audio = [NSBundle bundleWithPath:@"/Library/Wiivamp/"];
 
         if (!hasPlayedNews) {
             songLooper = [[AVPlayerLooper alloc] initWithPlayer:songPlayer templateItem:song timeRange:kCMTimeRangeInvalid];
-            songPlayer.volume = 0.3;
             [songPlayer play];
             hasPlayedNews = YES;
 
@@ -58,7 +57,6 @@ NSBundle *audio = [NSBundle bundleWithPath:@"/Library/Wiivamp/"];
 
         if (!hasPlayedContacts) {
             songLooper = [[AVPlayerLooper alloc] initWithPlayer:songPlayer templateItem:song timeRange:kCMTimeRangeInvalid];
-            songPlayer.volume = 0.3;
             [songPlayer play];
             hasPlayedContacts = YES;
 
@@ -71,7 +69,6 @@ NSBundle *audio = [NSBundle bundleWithPath:@"/Library/Wiivamp/"];
 
         if (!hasPlayedHealth) {
             songLooper = [[AVPlayerLooper alloc] initWithPlayer:songPlayer templateItem:song timeRange:kCMTimeRangeInvalid];
-            songPlayer.volume = 0.3;
             [songPlayer play];
             hasPlayedHealth = YES;
 
@@ -84,7 +81,6 @@ NSBundle *audio = [NSBundle bundleWithPath:@"/Library/Wiivamp/"];
 
         if (!hasPlayedFMF) {
             songLooper = [[AVPlayerLooper alloc] initWithPlayer:songPlayer templateItem:song timeRange:kCMTimeRangeInvalid];
-            songPlayer.volume = 0.3;
             [songPlayer play];
             hasPlayedFMF = YES;
 
@@ -97,7 +93,6 @@ NSBundle *audio = [NSBundle bundleWithPath:@"/Library/Wiivamp/"];
 
         if (!hasPlayedFMF) {
             songLooper = [[AVPlayerLooper alloc] initWithPlayer:songPlayer templateItem:song timeRange:kCMTimeRangeInvalid];
-            songPlayer.volume = 0.3;
             [songPlayer play];
             hasPlayedFMF = YES;
 
@@ -146,7 +141,13 @@ NSBundle *audio = [NSBundle bundleWithPath:@"/Library/Wiivamp/"];
 
     }];
                                                     
-    songPlayer.volume = 0.3;
+    if (customVolumeSwitch) {
+        songPlayer2.volume = volume;
+
+    } else {
+        songPlayer2.volume = 0.3;
+
+    }
     usleep(1000000);
     [songPlayer play];
 
@@ -165,7 +166,6 @@ double currentAudioPosition;
         [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:NULL];
         songPlayer2 = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:@"/Library/Wiivamp/mainmenu.mp3"] error:nil];
         
-        double volume = [volumeLevel doubleValue];
         if (customVolumeSwitch) {
             songPlayer2.volume = volume;
 
