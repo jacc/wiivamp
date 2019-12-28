@@ -19,14 +19,14 @@
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,10,10)];
         self.titleLabel.font = [UIFont boldSystemFontOfSize:17];
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        self.titleLabel.text = @"Wiivamp13";
+        self.titleLabel.text = @"Wiivamp";
         self.titleLabel.textColor = [UIColor whiteColor];
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         [self.navigationItem.titleView addSubview:self.titleLabel];
 
         self.iconView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,10,10)];
         self.iconView.contentMode = UIViewContentModeScaleAspectFit;
-        self.iconView.image = [UIImage imageWithContentsOfFile:@"/Library/PreferenceBundles/Wiivamp13Prefs.bundle/icon@2x.png"];
+        self.iconView.image = [UIImage imageWithContentsOfFile:@"/Library/PreferenceBundles/WiivampPrefs.bundle/icon@2x.png"];
         self.iconView.translatesAutoresizingMaskIntoConstraints = NO;
         self.iconView.alpha = 0.0;
         [self.navigationItem.titleView addSubview:self.iconView];
@@ -66,7 +66,7 @@
     self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,200,200)];
     self.headerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,200,200)];
     self.headerImageView.contentMode = UIViewContentModeScaleAspectFill;
-    self.headerImageView.image = [UIImage imageWithContentsOfFile:@"/Library/PreferenceBundles/Wiivamp13Prefs.bundle/Banner.png"];
+    self.headerImageView.image = [UIImage imageWithContentsOfFile:@"/Library/PreferenceBundles/WiivampPrefs.bundle/Banner.png"];
     self.headerImageView.translatesAutoresizingMaskIntoConstraints = NO;
 
     [self.headerView addSubview:self.headerImageView];
@@ -138,7 +138,7 @@
 
 - (void)selectStoreApps{
 
-    SparkAppListTableViewController* SelectionController = [[SparkAppListTableViewController alloc] initWithIdentifier:@"me.shymemoriees.wiivamp13preferences" andKey:@"storeApp"];
+    SparkAppListTableViewController* SelectionController = [[SparkAppListTableViewController alloc] initWithIdentifier:@"com.jacc.wiiprefs" andKey:@"storeApp"];
 
     [self.navigationController pushViewController:SelectionController animated:YES];
     self.navigationItem.hidesBackButton = FALSE;
@@ -147,7 +147,7 @@
 
 - (void)selectHomeBrewApps {
 
-    SparkAppListTableViewController* SelectionController = [[SparkAppListTableViewController alloc] initWithIdentifier:@"me.shymemoriees.wiivamp13preferences" andKey:@"homebrewApp"];
+    SparkAppListTableViewController* SelectionController = [[SparkAppListTableViewController alloc] initWithIdentifier:@"com.jacc.wiiprefs" andKey:@"homebrewApp"];
 
     [self.navigationController pushViewController:SelectionController animated:YES];
     self.navigationItem.hidesBackButton = FALSE;
@@ -156,7 +156,7 @@
 
 - (void)selectWeatherApps {
 
-    SparkAppListTableViewController* SelectionController = [[SparkAppListTableViewController alloc] initWithIdentifier:@"me.shymemoriees.wiivamp13preferences" andKey:@"weatherApp"];
+    SparkAppListTableViewController* SelectionController = [[SparkAppListTableViewController alloc] initWithIdentifier:@"com.jacc.wiiprefs" andKey:@"weatherApp"];
 
     [self.navigationController pushViewController:SelectionController animated:YES];
     self.navigationItem.hidesBackButton = FALSE;
@@ -165,7 +165,7 @@
 
 - (void)selectPhotoApps {
 
-    SparkAppListTableViewController* SelectionController = [[SparkAppListTableViewController alloc] initWithIdentifier:@"me.shymemoriees.wiivamp13preferences" andKey:@"photoApp"];
+    SparkAppListTableViewController* SelectionController = [[SparkAppListTableViewController alloc] initWithIdentifier:@"com.jacc.wiiprefs" andKey:@"photoApp"];
 
     [self.navigationController pushViewController:SelectionController animated:YES];
     self.navigationItem.hidesBackButton = FALSE;
@@ -174,7 +174,7 @@
 
 - (void)selectNewsApps {
 
-    SparkAppListTableViewController* SelectionController = [[SparkAppListTableViewController alloc] initWithIdentifier:@"me.shymemoriees.wiivamp13preferences" andKey:@"newsApp"];
+    SparkAppListTableViewController* SelectionController = [[SparkAppListTableViewController alloc] initWithIdentifier:@"com.jacc.wiiprefs" andKey:@"newsApp"];
 
     [self.navigationController pushViewController:SelectionController animated:YES];
     self.navigationItem.hidesBackButton = FALSE;
@@ -183,7 +183,7 @@
 
 - (void)selectContactApps {
 
-    SparkAppListTableViewController* SelectionController = [[SparkAppListTableViewController alloc] initWithIdentifier:@"me.shymemoriees.wiivamp13preferences" andKey:@"contactApp"];
+    SparkAppListTableViewController* SelectionController = [[SparkAppListTableViewController alloc] initWithIdentifier:@"com.jacc.wiiprefs" andKey:@"contactApp"];
 
     [self.navigationController pushViewController:SelectionController animated:YES];
     self.navigationItem.hidesBackButton = FALSE;
@@ -192,7 +192,7 @@
 
 - (void)selectHealthApps {
 
-    SparkAppListTableViewController* SelectionController = [[SparkAppListTableViewController alloc] initWithIdentifier:@"me.shymemoriees.wiivamp13preferences" andKey:@"healthApp"];
+    SparkAppListTableViewController* SelectionController = [[SparkAppListTableViewController alloc] initWithIdentifier:@"com.jacc.wiiprefs" andKey:@"healthApp"];
 
     [self.navigationController pushViewController:SelectionController animated:YES];
     self.navigationItem.hidesBackButton = FALSE;
@@ -201,7 +201,7 @@
 
 - (void)selectFriendsApps {
 
-    SparkAppListTableViewController* SelectionController = [[SparkAppListTableViewController alloc] initWithIdentifier:@"me.shymemoriees.wiivamp13preferences" andKey:@"friendsApp"];
+    SparkAppListTableViewController* SelectionController = [[SparkAppListTableViewController alloc] initWithIdentifier:@"com.jacc.wiiprefs" andKey:@"friendsApp"];
 
     [self.navigationController pushViewController:SelectionController animated:YES];
     self.navigationItem.hidesBackButton = FALSE;
@@ -209,7 +209,7 @@
 }
 
 - (void)respring {
-	UIAlertController *respring = [UIAlertController alertControllerWithTitle:@"Wiivamp13"
+	UIAlertController *respring = [UIAlertController alertControllerWithTitle:@"Wiivamp"
 													 message:@"Do you really want to ReSpring?"
 													 preferredStyle:UIAlertControllerStyleAlert];
 	UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action) {

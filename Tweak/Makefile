@@ -5,7 +5,7 @@ GO_EASY_ON_ME = 1
 
 include $(THEOS)/makefiles/common.mk
 
-TWEAK_NAME = Wiivamp13
+TWEAK_NAME = Wiivamp
 $(TWEAK_NAME)_FILES = Tweak.xm
 $(TWEAK_NAME)_FRAMEWORKS = UIKit Foundation
 $(TWEAK_NAME)_LIBRARIES = sparkapplist

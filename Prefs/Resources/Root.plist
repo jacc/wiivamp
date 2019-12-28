@@ -11,13 +11,13 @@
 			<key>default</key>
 			<true/>
 			<key>defaults</key>
-			<string>me.shymemoriees.wiivamp13preferences</string>
+			<string>com.jacc.wiiprefs</string>
 			<key>key</key>
 			<string>Enabled</string>
 			<key>label</key>
 			<string>Enabled (Respring required)</string>
 			<key>PostNotification</key>
-			<string>me.shymemoriees.wiivamp13preferences/ReloadPrefs</string>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
 		</dict>
 		
 		<dict>
@@ -32,13 +32,13 @@
 			<key>default</key>
 			<true/>
 			<key>defaults</key>
-			<string>me.shymemoriees.wiivamp13preferences</string>
+			<string>com.jacc.wiiprefs</string>
 			<key>key</key>
 			<string>mainMenuMusic</string>
 			<key>label</key>
 			<string>Enable Main Menu Theme</string>
 			<key>PostNotification</key>
-			<string>me.shymemoriees.wiivamp13preferences/ReloadPrefs</string>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -52,13 +52,13 @@
 			<key>default</key>
 			<true/>
 			<key>defaults</key>
-			<string>me.shymemoriees.wiivamp13preferences</string>
+			<string>com.jacc.wiiprefs</string>
 			<key>key</key>
 			<string>ENABLE_APPSTORE</string>
 			<key>label</key>
 			<string>Enable Wii Store Theme</string>
 			<key>PostNotification</key>
-			<string>me.shymemoriees.wiivamp13preferences/ReloadPrefs</string>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -81,13 +81,13 @@
 			<key>default</key>
 			<true/>
 			<key>defaults</key>
-			<string>me.shymemoriees.wiivamp13preferences</string>
+			<string>com.jacc.wiiprefs</string>
 			<key>key</key>
 			<string>ENABLE_CYDIA</string>
 			<key>label</key>
 			<string>Enable Homebrew Theme</string>
 			<key>PostNotification</key>
-			<string>me.shymemoriees.wiivamp13preferences/ReloadPrefs</string>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -110,13 +110,13 @@
 			<key>default</key>
 			<true/>
 			<key>defaults</key>
-			<string>me.shymemoriees.wiivamp13preferences</string>
+			<string>com.jacc.wiiprefs</string>
 			<key>key</key>
 			<string>ENABLE_WEATHER</string>
 			<key>label</key>
 			<string>Enable Weather Theme</string>
 			<key>PostNotification</key>
-			<string>me.shymemoriees.wiivamp13preferences/ReloadPrefs</string>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -139,13 +139,13 @@
 			<key>default</key>
 			<true/>
 			<key>defaults</key>
-			<string>me.shymemoriees.wiivamp13preferences</string>
+			<string>com.jacc.wiiprefs</string>
 			<key>key</key>
 			<string>ENABLE_PHOTOS</string>
 			<key>label</key>
 			<string>Enable Photos Theme</string>
 			<key>PostNotification</key>
-			<string>me.shymemoriees.wiivamp13preferences/ReloadPrefs</string>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -168,13 +168,13 @@
 			<key>default</key>
 			<true/>
 			<key>defaults</key>
-			<string>me.shymemoriees.wiivamp13preferences</string>
+			<string>com.jacc.wiiprefs</string>
 			<key>key</key>
 			<string>ENABLE_NEWS</string>
 			<key>label</key>
 			<string>Enable News Theme</string>
 			<key>PostNotification</key>
-			<string>me.shymemoriees.wiivamp13preferences/ReloadPrefs</string>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -197,13 +197,13 @@
 			<key>default</key>
 			<true/>
 			<key>defaults</key>
-			<string>me.shymemoriees.wiivamp13preferences</string>
+			<string>com.jacc.wiiprefs</string>
 			<key>key</key>
 			<string>ENABLE_CONTACTS</string>
 			<key>label</key>
 			<string>Enable Contacts Theme</string>
 			<key>PostNotification</key>
-			<string>me.shymemoriees.wiivamp13preferences/ReloadPrefs</string>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -226,13 +226,13 @@
 			<key>default</key>
 			<true/>
 			<key>defaults</key>
-			<string>me.shymemoriees.wiivamp13preferences</string>
+			<string>com.jacc.wiiprefs</string>
 			<key>key</key>
 			<string>ENABLE_HEALTH</string>
 			<key>label</key>
 			<string>Enable Health Theme</string>
 			<key>PostNotification</key>
-			<string>me.shymemoriees.wiivamp13preferences/ReloadPrefs</string>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -255,13 +255,13 @@
 			<key>default</key>
 			<true/>
 			<key>defaults</key>
-			<string>me.shymemoriees.wiivamp13preferences</string>
+			<string>com.jacc.wiiprefs</string>
 			<key>key</key>
 			<string>ENABLE_FMF</string>
 			<key>label</key>
 			<string>Enable Mii Theme</string>
 			<key>PostNotification</key>
-			<string>me.shymemoriees.wiivamp13preferences/ReloadPrefs</string>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -284,13 +284,13 @@
 			<key>default</key>
 			<false/>
 			<key>defaults</key>
-			<string>me.shymemoriees.wiivamp13preferences</string>
+			<string>com.jacc.wiiprefs</string>
 			<key>key</key>
 			<string>customVolume</string>
 			<key>label</key>
 			<string>Custom Volume</string>
 			<key>PostNotification</key>
-			<string>me.shymemoriees.wiivamp13preferences/ReloadPrefs</string>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -298,7 +298,7 @@
 			<key>default</key>
 			<real>0.3</real>
 			<key>defaults</key>
-			<string>me.shymemoriees.wiivamp13preferences</string>
+			<string>com.jacc.wiiprefs</string>
 			<key>key</key>
 			<string>Volume</string>
 			<key>min</key>
@@ -310,11 +310,11 @@
 			<key>isSegmented</key>
 			<false/>
 			<key>PostNotification</key>
-			<string>me.shymemoriees.wiivamp13preferences/ReloadPrefs</string>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
 		</dict>
 
 	</array>
 	<key>title</key>
-	<string>Wiivamp13</string>
+	<string>Wiivamp</string>
 </dict>
 </plist>

@@ -5,9 +5,9 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>Wiivamp13Prefs</string>
+	<string>WiivampPrefs</string>
 	<key>CFBundleIdentifier</key>
-	<string>me.shymemoriees.wiivamp13preferences</string>
+	<string>com.jacc.wiiprefs</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>

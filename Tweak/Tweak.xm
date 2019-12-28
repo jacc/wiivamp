@@ -12,49 +12,49 @@ double volume = [volumeLevel doubleValue];
     %orig;
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:NULL];
     
-    if ([SparkAppList doesIdentifier:@"me.shymemoriees.wiivamp13preferences" andKey:@"storeApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_APPSTORESwitch && !hasPlayedApp) {
+    if ([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"storeApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_APPSTORESwitch && !hasPlayedApp) {
         [self playSong:@"shop" restartTime:CMTimeMake(7, 1)];
         hasPlayedApp = YES;
 
     }
 
-     if ([SparkAppList doesIdentifier:@"me.shymemoriees.wiivamp13preferences" andKey:@"weatherApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_WEATHERSwitch && !hasPlayedWeather) {
+     if ([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"weatherApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_WEATHERSwitch && !hasPlayedWeather) {
          [self playSong:@"wcm" restartTime:CMTimeMake(7, 1)];
          hasPlayedWeather = YES;
 
      }
 
-     if ([SparkAppList doesIdentifier:@"me.shymemoriees.wiivamp13preferences" andKey:@"homebrewApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_CYDIASwitch && !hasPlayedCydia) {
+     if ([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"homebrewApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_CYDIASwitch && !hasPlayedCydia) {
         [self playSong:@"hbc" restartTime:CMTimeMake(8, 1)];
         hasPlayedCydia = YES;
 
      }
 
-     if ([SparkAppList doesIdentifier:@"me.shymemoriees.wiivamp13preferences" andKey:@"photoApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_PHOTOSSwitch && !hasPlayedPhotos) {
+     if ([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"photoApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_PHOTOSSwitch && !hasPlayedPhotos) {
         [self playSong:@"photos" restartTime:CMTimeMake(10, 1)];
         hasPlayedPhotos = YES;
 
      }
 
-     if ([SparkAppList doesIdentifier:@"me.shymemoriees.wiivamp13preferences" andKey:@"newsApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_NEWSSwitch && !hasPlayedNews) {
+     if ([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"newsApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_NEWSSwitch && !hasPlayedNews) {
          [self playSong:@"news" restartTime:CMTimeMake(11, 1)];
          hasPlayedNews = YES;
 
      }
 
-     if ([SparkAppList doesIdentifier:@"me.shymemoriees.wiivamp13preferences" andKey:@"contactApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_CONTACTSSwitch && !hasPlayedContacts) {
+     if ([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"contactApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_CONTACTSSwitch && !hasPlayedContacts) {
          [self playSong:@"mii" restartTime:CMTimeMake(12, 1)];
          hasPlayedContacts = YES;
 
      }
 
-     if ([SparkAppList doesIdentifier:@"me.shymemoriees.wiivamp13preferences" andKey:@"healthApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_HEALTHSwitch && !hasPlayedHealth) {
+     if ([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"healthApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_HEALTHSwitch && !hasPlayedHealth) {
          [self playSong:@"yoga" restartTime:CMTimeMake(13, 1)];
          hasPlayedHealth = YES;
 
      }
 
-     if ([SparkAppList doesIdentifier:@"me.shymemoriees.wiivamp13preferences" andKey:@"friendsApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_FMFSwitch && !hasPlayedFMF) {
+     if ([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"friendsApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_FMFSwitch && !hasPlayedFMF) {
          [self playSong:@"checkmii" restartTime:CMTimeMake(14, 1)];
          hasPlayedFMF = YES;
 
@@ -171,7 +171,7 @@ double currentAudioPosition;
 
     %orig; //  Thanks to Nepeta for the DRM
     if (!dpkgInvalid) return;
-		UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Wiivamp13"
+		UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Wiivamp"
 		message:@"Seriously? Pirating a free Tweak is awful!\nPiracy repo's Tweaks could contain Malware if you didn't know that, so go ahead and get Wiivamp from the official Source https://repo.dynastic.co/.\nIf you're seeing this but you got it from the official source then make sure to add https://repo.dynastic.co to Cydia or Sileo."
 		preferredStyle:UIAlertControllerStyleAlert];
 
@@ -193,17 +193,46 @@ double currentAudioPosition;
 %end
 
 %ctor {
-    // Thanks To Nepeta For The DRM
-    dpkgInvalid = ![[NSFileManager defaultManager] fileExistsAtPath:@"/var/lib/dpkg/info/me.shymemoriees.wiivamp13.list"];
 
-    if (!dpkgInvalid) dpkgInvalid = ![[NSFileManager defaultManager] fileExistsAtPath:@"/var/lib/dpkg/info/me.shymemoriees.wiivamp13.md5sums"];
+    if (![NSProcessInfo processInfo]) return;
+    NSString *processName = [NSProcessInfo processInfo].processName;
+    bool isSpringboard = [@"SpringBoard" isEqualToString:processName];
+
+    // Someone smarter than Nepeta invented this.
+    // https://www.reddit.com/r/jailbreak/comments/4yz5v5/questionremote_messages_not_enabling/d6rlh88/
+    bool shouldLoad = NO;
+    NSArray *args = [[NSClassFromString(@"NSProcessInfo") processInfo] arguments];
+    NSUInteger count = args.count;
+    if (count != 0) {
+        NSString *executablePath = args[0];
+        if (executablePath) {
+            NSString *processName = [executablePath lastPathComponent];
+            BOOL isApplication = [executablePath rangeOfString:@"/Application/"].location != NSNotFound || [executablePath rangeOfString:@"/Applications/"].location != NSNotFound;
+            BOOL isFileProvider = [[processName lowercaseString] rangeOfString:@"fileprovider"].location != NSNotFound;
+            BOOL skip = [processName isEqualToString:@"AdSheet"]
+                        || [processName isEqualToString:@"CoreAuthUI"]
+                        || [processName isEqualToString:@"InCallService"]
+                        || [processName isEqualToString:@"MessagesNotificationViewService"]
+                        || [executablePath rangeOfString:@".appex/"].location != NSNotFound;
+            if ((!isFileProvider && isApplication && !skip) || isSpringboard) {
+                shouldLoad = YES;
+            }
+        }
+    }
+
+    if (!shouldLoad) return;
+
+    // Thanks To Nepeta For The DRM
+    dpkgInvalid = ![[NSFileManager defaultManager] fileExistsAtPath:@"/var/lib/dpkg/info/com.jacc.wiivamp.list"];
+
+    if (!dpkgInvalid) dpkgInvalid = ![[NSFileManager defaultManager] fileExistsAtPath:@"/var/lib/dpkg/info/com.jacc.wiivamp.md5sums"];
 
     if (dpkgInvalid) {
         %init(Wiivamp13IntegrityFail);
         return;
     }
 
-    pfs = [[HBPreferences alloc] initWithIdentifier:@"me.shymemoriees.wiivamp13preferences"];
+    pfs = [[HBPreferences alloc] initWithIdentifier:@"com.jacc.wiiprefs"];
     // Enabled Switch
     [pfs registerBool:&enabled default:YES forKey:@"Enabled"];
     // Option Switches
@@ -223,10 +252,10 @@ double currentAudioPosition;
 	if (!dpkgInvalid && enabled) {
         BOOL ok = false;
         
-        ok = ([[NSFileManager defaultManager] fileExistsAtPath:[NSString stringWithFormat:@"/var/lib/dpkg/info/%@%@%@%@%@%@%@%@%@%@%@%@%@%@%@.wiivamp13.md5sums", @"m", @"e", @".", @"s", @"h", @"y", @"m", @"e", @"m", @"o", @"r", @"i", @"e", @"e", @"s"]]
+        ok = ([[NSFileManager defaultManager] fileExistsAtPath:[NSString stringWithFormat:@"/var/lib/dpkg/info/%@%@%@%@%@%@%@%@.wiivamp.md5sums", @"c", @"o", @"m", @".", @"j", @"a", @"c", @"c"]]
         );
 
-        if (ok && [@"shymemoriees" isEqualToString:@"shymemoriees"]) {
+        if (ok && [@"jacc" isEqualToString:@"jacc"]) {
             %init(Wiivamp13);
             return;
         } else {

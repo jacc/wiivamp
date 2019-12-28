@@ -12,6 +12,3 @@
 
 If you have Theos installed, a simple `make package` should make the package. All files are included.
 Also make sure to have libsparkapplist installed in your theos directory.
-
-## One More Thing
-Several Features Are Still Broken

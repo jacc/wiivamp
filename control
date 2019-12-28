@@ -1,9 +1,9 @@
-Package: me.shymemoriees.wiivamp13
-Name: Wiivamp13
-Depends: mobilesubstrate, firmware (>= 12), com.spark.libsparkapplist, ws.hbang.common (>= 1.14)
+Package: com.jacc.wiivamp
+Name: Wiivamp
+Depends: mobilesubstrate, firmware (>= 11), com.spark.libsparkapplist, ws.hbang.common (>= 1.14)
 Version: 3.3
 Architecture: iphoneos-arm
 Description: Play your favorite Wii songs inside any of your favorite apps!
-Maintainer: jacc, Diatrus, ShyMemoriees
-Author: jacc, Diatrus, ShyMemoriees
-Section: Tweaks (Updated)
+Maintainer: jacc
+Author: jacc
+Section: Tweaks
