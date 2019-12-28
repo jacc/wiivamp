@@ -44,8 +44,8 @@ BOOL hasPlayedHomeScreen = NO;
 
 // Interfaces
 @interface UIViewController (Wiivamp)
+- (void)viewWillAppear:(BOOL)arg1;
 - (void)playSong:(NSString *)songName restartTime:(CMTime)time;
-- (void)viewDidAppear:(BOOL)arg1;
 @end
 
 @interface SBIconController : UIViewController

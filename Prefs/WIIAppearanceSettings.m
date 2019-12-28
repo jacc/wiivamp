@@ -3,7 +3,7 @@
 @implementation WIIAppearanceSettings
 
 -(UIColor *)tintColor {
-    return [UIColor colorWithRed:0.75 green:0.86 blue:0.98 alpha:1.0];
+    return [UIColor colorWithRed:0.52 green:0.73 blue:0.93 alpha:1.0];
 }
 
 -(UIColor *)statusBarTintColor {
@@ -23,7 +23,7 @@
 }
 
 -(UIColor *)navigationBarBackgroundColor {
-    return [UIColor colorWithRed:0.75 green:0.86 blue:0.98 alpha:1.0];
+    return [UIColor colorWithRed:0.52 green:0.73 blue:0.93 alpha:1.0];
 }
 
 -(BOOL)translucentNavigationBar {

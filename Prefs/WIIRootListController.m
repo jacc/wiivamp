@@ -92,7 +92,7 @@
     CGRect frame = self.table.bounds;
     frame.origin.y = -frame.size.height;
 
-    self.navigationController.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.75 green:0.86 blue:0.98 alpha:1.0];
+    self.navigationController.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.52 green:0.73 blue:0.93 alpha:1.0];
     [self.navigationController.navigationController.navigationBar setShadowImage: [UIImage new]];
     self.navigationController.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationController.navigationBar.translucent = NO;
@@ -108,8 +108,6 @@
 	}
 
     [self.navigationController.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
-
-    [self showThanksAlert];
 
 }
 
@@ -230,24 +228,6 @@
     [t setLaunchPath:@"/usr/bin/killall"];
     [t setArguments:[NSArray arrayWithObjects:@"backboardd", nil]];
     [t launch];
-}
-
-- (void)showThanksAlert {
-
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString* pathForWiivamp13Plist = @"/var/mobile/Library/Preferences/me.shymemoriees.wiivamp13preferences.plist";
-
-    if (!([fileManager fileExistsAtPath:pathForWiivamp13Plist])) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Wiivamp13"
-        message:@"Thanks For Downloading Wiivamp13 🌸\nI hope you enjoy it 😊\n\n[Toggle Anything In The Prefs To Make This Alert Not Show Anymore]"
-        preferredStyle:UIAlertControllerStyleAlert];
-
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Understood" style:UIAlertActionStyleCancel handler:nil];
-        [alert addAction:cancelAction];
-        [self presentViewController:alert animated:YES completion:nil];
-
-    }
-
 }
 
 @end

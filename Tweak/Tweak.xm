@@ -7,9 +7,11 @@ double volume = [volumeLevel doubleValue];
 
 %hook UIViewController
 
-- (void)viewDidAppear:(BOOL)arg1 {
+-(void)viewWillAppear:(BOOL)arg1 {
 
     %orig;
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:NULL];
+    
     if ([SparkAppList doesIdentifier:@"me.shymemoriees.wiivamp13preferences" andKey:@"storeApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_APPSTORESwitch && !hasPlayedApp) {
         [self playSong:@"shop" restartTime:CMTimeMake(7, 1)];
         hasPlayedApp = YES;
@@ -17,14 +19,8 @@ double volume = [volumeLevel doubleValue];
     }
 
      if ([SparkAppList doesIdentifier:@"me.shymemoriees.wiivamp13preferences" andKey:@"weatherApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_WEATHERSwitch && !hasPlayedWeather) {
-         AVPlayerItem *song = [AVPlayerItem playerItemWithURL:[audio URLForResource:@"wcm" withExtension:@"m4a"]];
-
-        if (!hasPlayedWeather) {
-            songLooper = [[AVPlayerLooper alloc] initWithPlayer:songPlayer templateItem:song timeRange:kCMTimeRangeInvalid];
-            [songPlayer play];
-            hasPlayedWeather = YES;
-
-        }
+         [self playSong:@"wcm" restartTime:CMTimeMake(7, 1)];
+         hasPlayedWeather = YES;
 
      }
 
@@ -41,62 +37,26 @@ double volume = [volumeLevel doubleValue];
      }
 
      if ([SparkAppList doesIdentifier:@"me.shymemoriees.wiivamp13preferences" andKey:@"newsApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_NEWSSwitch && !hasPlayedNews) {
-         AVPlayerItem *song = [AVPlayerItem playerItemWithURL:[audio URLForResource:@"news" withExtension:@"m4a"]];
-
-        if (!hasPlayedNews) {
-            songLooper = [[AVPlayerLooper alloc] initWithPlayer:songPlayer templateItem:song timeRange:kCMTimeRangeInvalid];
-            [songPlayer play];
-            hasPlayedNews = YES;
-
-        }
+         [self playSong:@"news" restartTime:CMTimeMake(11, 1)];
+         hasPlayedNews = YES;
 
      }
 
      if ([SparkAppList doesIdentifier:@"me.shymemoriees.wiivamp13preferences" andKey:@"contactApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_CONTACTSSwitch && !hasPlayedContacts) {
-        AVPlayerItem *song = [AVPlayerItem playerItemWithURL:[audio URLForResource:@"mii" withExtension:@"m4a"]];
-
-        if (!hasPlayedContacts) {
-            songLooper = [[AVPlayerLooper alloc] initWithPlayer:songPlayer templateItem:song timeRange:kCMTimeRangeInvalid];
-            [songPlayer play];
-            hasPlayedContacts = YES;
-
-        }
+         [self playSong:@"mii" restartTime:CMTimeMake(12, 1)];
+         hasPlayedContacts = YES;
 
      }
 
      if ([SparkAppList doesIdentifier:@"me.shymemoriees.wiivamp13preferences" andKey:@"healthApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_HEALTHSwitch && !hasPlayedHealth) {
-        AVPlayerItem *song = [AVPlayerItem playerItemWithURL:[audio URLForResource:@"yoga" withExtension:@"m4a"]];
-
-        if (!hasPlayedHealth) {
-            songLooper = [[AVPlayerLooper alloc] initWithPlayer:songPlayer templateItem:song timeRange:kCMTimeRangeInvalid];
-            [songPlayer play];
-            hasPlayedHealth = YES;
-
-        }
+         [self playSong:@"yoga" restartTime:CMTimeMake(13, 1)];
+         hasPlayedHealth = YES;
 
      }
 
      if ([SparkAppList doesIdentifier:@"me.shymemoriees.wiivamp13preferences" andKey:@"friendsApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_FMFSwitch && !hasPlayedFMF) {
-        AVPlayerItem *song = [AVPlayerItem playerItemWithURL:[audio URLForResource:@"checkmii" withExtension:@"m4a"]];
-
-        if (!hasPlayedFMF) {
-            songLooper = [[AVPlayerLooper alloc] initWithPlayer:songPlayer templateItem:song timeRange:kCMTimeRangeInvalid];
-            [songPlayer play];
-            hasPlayedFMF = YES;
-
-        }
-
-     }
-
-     if ([SparkAppList doesIdentifier:@"me.shymemoriees.wiivamp13preferences" andKey:@"mainMenu" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_FMFSwitch && !hasPlayedFMF) {
-        AVPlayerItem *song = [AVPlayerItem playerItemWithURL:[audio URLForResource:@"checkmii" withExtension:@"m4a"]];
-
-        if (!hasPlayedFMF) {
-            songLooper = [[AVPlayerLooper alloc] initWithPlayer:songPlayer templateItem:song timeRange:kCMTimeRangeInvalid];
-            [songPlayer play];
-            hasPlayedFMF = YES;
-
-        }
+         [self playSong:@"checkmii" restartTime:CMTimeMake(14, 1)];
+         hasPlayedFMF = YES;
 
      }
 
@@ -142,10 +102,10 @@ double volume = [volumeLevel doubleValue];
     }];
                                                     
     if (customVolumeSwitch) {
-        songPlayer2.volume = volume;
+        songPlayer.volume = volume;
 
     } else {
-        songPlayer2.volume = 0.3;
+        songPlayer.volume = 0.3;
 
     }
     usleep(1000000);
@@ -164,7 +124,7 @@ double currentAudioPosition;
     %orig;
     if (mainMenuMusicSwitch) {
         [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:NULL];
-        songPlayer2 = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:@"/Library/Wiivamp/mainmenu.mp3"] error:nil];
+        songPlayer2 = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:@"/Library/Wiivamp/mainmenu.m4a"] error:nil];
         
         if (customVolumeSwitch) {
             songPlayer2.volume = volume;
@@ -212,13 +172,13 @@ double currentAudioPosition;
     %orig; //  Thanks to Nepeta for the DRM
     if (!dpkgInvalid) return;
 		UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Wiivamp13"
-		message:@"Seriously? Pirating a free Tweak is awful!\nPiracy repo's Tweaks could contain Malware if you didn't know that, so go ahead and get Wiivamp13 from the official Source https://repo.shymemoriees.me/.\nIf you're seeing this but you got it from the official source then make sure to add https://repo.shymemoriees.me to Cydia or Sileo."
+		message:@"Seriously? Pirating a free Tweak is awful!\nPiracy repo's Tweaks could contain Malware if you didn't know that, so go ahead and get Wiivamp from the official Source https://repo.dynastic.co/.\nIf you're seeing this but you got it from the official source then make sure to add https://repo.dynastic.co to Cydia or Sileo."
 		preferredStyle:UIAlertControllerStyleAlert];
 
 		UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Aww man" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action) {
 
 			UIApplication *application = [UIApplication sharedApplication];
-			[application openURL:[NSURL URLWithString:@"https://repo.shymemoriees.me/"] options:@{} completionHandler:nil];
+			[application openURL:[NSURL URLWithString:@"https://repo.dynastic.co/"] options:@{} completionHandler:nil];
 
 	}];
 

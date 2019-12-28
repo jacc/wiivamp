@@ -6,18 +6,6 @@
 	<array>
 
 		<dict>
-            <key>cell</key>
-            <string>PSButtonCell</string>
-            <key>label</key>
-            <string>@ShyMemoriees</string>
-            <key>cellClass</key>
-            <string>HBTwitterCell</string>
-            <key>label</key>
-            <string>ShyMemoriees</string>
-            <key>user</key>
-            <string>ShyMemoriees</string>
-        </dict>
-		<dict>
 			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>default</key>
@@ -323,92 +311,6 @@
 			<false/>
 			<key>PostNotification</key>
 			<string>me.shymemoriees.wiivamp13preferences/ReloadPrefs</string>
-		</dict>
-
-		<!-- Support The Original Authors -->
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>Original Developer</string>
-		</dict>
-		<dict>
-			<key>cellClass</key>
-			<string>HBTwitterCell</string>
-			<key>label</key>
-			<string>Jack</string>
-			<key>user</key>
-			<string>j6ckson</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>tvOS Port By</string>
-		</dict>
-		<dict>
-			<key>cellClass</key>
-			<string>HBTwitterCell</string>
-			<key>label</key>
-			<string>Hayden</string>
-			<key>user</key>
-			<string>Diatrus</string>
-		</dict>
-
-		<!-- Support Me -->
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>Support Me</string>
-		</dict>
-		<dict>
-			<key>cellClass</key>
-			<string>HBLinkTableCell</string>
-			<key>label</key>
-			<string>Little Donation 🌺</string>
-			<key>subtitle</key>
-			<string>Helps Me To Pay For My Server</string>
-			<key>url</key>
-			<string>https://paypal.me/ShyMemoriees</string>
-		</dict>
-		<dict>
-			<key>cellClass</key>
-			<string>HBLinkTableCell</string>
-			<key>label</key>
-			<string>Feature Request? ✨</string>
-			<key>subtitle</key>
-			<string>Send Me An Email With Your Request</string>
-			<key>url</key>
-			<string>mailto:shymemoriees@yahoo.com?subject=Wiivamp13%20Feature%20Request</string>
-		</dict>
-		<dict>
-			<key>cellClass</key>
-			<string>HBLinkTableCell</string>
-			<key>label</key>
-			<string>Source Code 🌙</string>
-			<key>subtitle</key>
-			<string>Github</string>
-			<key>url</key>
-			<string>https://github.com/ShyMemoriees/wiivamp</string>
-		</dict>
-		<dict>
-			<key>cellClass</key>
-			<string>HBLinkTableCell</string>
-			<key>label</key>
-			<string>Found A Bug? 🌧</string>
-			<key>subtitle</key>
-			<string>Leave A Bug Report Here</string>
-			<key>url</key>
-			<string>https://github.com/ShyMemoriees/wiivamp/issues/new</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>footerText</key>
-			<string>Wiivamp Updated With ❤️ By ShyMemoriees</string>
-			<key>isStaticText</key>
-			<true/>
 		</dict>
 
 	</array>

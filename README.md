@@ -7,7 +7,6 @@
 
 - [jacc](https://lafond.dev) - original developer
 - [Diatrus](https://diatr.us) - wrote entire tvOS port, improved audio player for iOS and tvOS.
-- [ShyMemoriees](https://shymemoriees.me) - updated the tweak with cephei preferences and fixed the iOS 13 respring loop for some users. (Also code cleanup)
 
 ## Compiling
 
