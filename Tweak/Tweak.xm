@@ -1,16 +1,15 @@
 #import "Wiivamp.h"
+#import <AudioToolbox/AudioServices.h>
 
-NSBundle *audio = [NSBundle bundleWithPath:@"/Library/Wiivamp/"];
-double volume = [volumeLevel doubleValue];
+NSBundle *audio = [NSBundle bundleWithPath:@"/Library/Wiivamp/"]; // Location Of The Songs
 
-%group Wiivamp13
-
+%group Wiivamp
+    // Play Songs In Selected Apps
 %hook UIViewController
 
 -(void)viewWillAppear:(BOOL)arg1 {
 
     %orig;
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:NULL];
     
     if ([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"storeApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_APPSTORESwitch && !hasPlayedApp) {
         [self playSong:@"shop" restartTime:CMTimeMake(7, 1)];
@@ -61,10 +60,16 @@ double volume = [volumeLevel doubleValue];
      }
 
 }
-
+    // Method To Play And Pause The Songs
 %new
 - (void)playSong:(NSString *)songName restartTime:(CMTime)time {
 
+    double volume = [volumeLevel doubleValue]; // Get The Volume From The Slider
+
+    if (allowMusicSwitch) {
+        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:NULL];
+
+    }
     AVPlayerItem *song = [AVPlayerItem playerItemWithURL:[audio URLForResource:songName withExtension:@"m4a"]];
     AVPlayer *songPlayer = [[AVPlayer alloc] initWithPlayerItem:song];
     songPlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
@@ -101,7 +106,7 @@ double volume = [volumeLevel doubleValue];
 
     }];
                                                     
-    if (customVolumeSwitch) {
+    if (customVolumeSwitch) { // Use Custom Volume If The Switch Is Selected
         songPlayer.volume = volume;
 
     } else {
@@ -114,46 +119,126 @@ double volume = [volumeLevel doubleValue];
 }
 
 %end
-
+    // Main Menu Theme, Works Only On iOS 13 Because The Two Methods Which Are Used Don't Exist On iOS >=12
 %hook SBIconController
 
 double currentAudioPosition;
 
-- (void)viewWillAppear:(BOOL)arg1 {
-
+- (void)viewWillAppear:(BOOL)arg1 { // When The HomeScreen Appears Play The Main Menu Theme And Or The Beginning Of It
+    
     %orig;
-    if (mainMenuMusicSwitch) {
-        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:NULL];
-        songPlayer2 = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:@"/Library/Wiivamp/mainmenu.m4a"] error:nil];
-        
-        if (customVolumeSwitch) {
-            songPlayer2.volume = volume;
 
-        } else {
-            songPlayer2.volume = 0.3;
+    if (!(SYSTEM_VERSION_LESS_THAN(@"13.0"))) { // Make Sure This Code Does Not Run On iOS 12 Or Lower To Prevent Bugs
+        double volume = [volumeLevel doubleValue]; // Get The Volume From The Slider
+
+        if (allowMusicSwitch) { // Allow Music To Play While Wiivamp Plays, Only If The Switch Is Enabled
+                [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:NULL];
 
         }
         
-        songPlayer2.numberOfLoops = 999;
-        if (!hasPlayedHomeScreen) {
-            [songPlayer2 play];
-            hasPlayedHomeScreen = YES;
+        if (beginningSoundSwitch && !hasPlayedBeginning) {
+            songPlayer3 = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:@"/Library/Wiivamp/beginningWiiMenu.m4a"] error:nil];
+            songPlayer3.numberOfLoops = 0;
+            [songPlayer3 play];
 
-        } else {
-            [songPlayer2 playAtTime: currentAudioPosition];
+            if (beginningSoundOnlyOnceSwitch) {
+                hasPlayedBeginning = YES;
+
+            }
 
         }
 
-    }
+        if (mainMenuMusicSwitch) {
+            songPlayer2 = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:@"/Library/Wiivamp/mainmenu.m4a"] error:nil];
+            
+            songPlayer2.numberOfLoops = 999;
+            if (!hasPlayedHomeScreen) {
+                [songPlayer2 play];
+                hasPlayedHomeScreen = YES;
+
+            } else {
+                [songPlayer2 playAtTime: currentAudioPosition];
+
+            }
+
+            if (customVolumeSwitch) { // Use Custom Volume If The Switch Is Selected
+                songPlayer2.volume = volume;
+                songPlayer3.volume = volume;
+
+            } else {
+                songPlayer2.volume = 0.3;
+                songPlayer3.volume = 0.3;
+
+            }
+
+        }
+        
+	}
 
 }
-
+    // Stop The Music When Leaving HomeScreen
 - (void)viewWillDisappear:(BOOL)arg1 {
 
     %orig;
     if (mainMenuMusicSwitch) {
         currentAudioPosition = songPlayer2.deviceCurrentTime;
         [songPlayer2 pause];
+        [songPlayer3 stop];
+
+    }
+
+}
+
+%end
+
+%hook SBCoverSheetPrimarySlidingViewController // Only iOS 12 To Prevent Bugs And To Add Compatibility
+
+- (void)viewWillDisappear:(BOOL)arg1 {
+
+    %orig;
+    if (SYSTEM_VERSION_LESS_THAN(@"13.0")) { // Make Sure This Code Only Runs On iOS 12 Or Lower To Prevent Bugs
+        double volume = [volumeLevel doubleValue]; // Get The Volume From The Slider
+
+        if (allowMusicSwitch) { // Allow Music To Play While Wiivamp Plays, Only If The Switch Is Enabled
+            [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:NULL];
+
+        }
+
+        if (customVolumeSwitch) { // Use Custom Volume If The Switch Is Selected
+            songPlayer3.volume = volume;
+
+            } else {
+                songPlayer3.volume = 0.3;
+
+            }
+
+        if (beginningSoundSwitch && !hasPlayedBeginning) {
+            songPlayer3 = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:@"/Library/Wiivamp/beginningWiiMenu.m4a"] error:nil];
+            songPlayer3.numberOfLoops = 0;
+            [songPlayer3 play];
+
+            if (beginningSoundOnlyOnceSwitch) {
+                hasPlayedBeginning = YES;
+
+            }
+
+        }
+
+    }
+
+}
+
+%end
+
+%hook SBFolderView
+
+- (void)scrollViewWillBeginDragging:(id)arg1 {
+
+	%orig;
+    if (pageScrollSoundSwitch) {
+        songPlayer3 = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:@"/Library/Wiivamp/pageScroll.m4a"] error:nil];
+        songPlayer3.numberOfLoops = 0;
+        [songPlayer3 play];
 
     }
 
@@ -163,11 +248,11 @@ double currentAudioPosition;
 
 %end
 
-%group Wiivamp13IntegrityFail
+%group WiivampIntegrityFail
 
 %hook SBCoverSheetPrimarySlidingViewController
 
-- (void)viewDidDisappear:(BOOL)arg1 {
+- (void)viewDidAppear:(BOOL)arg1 {
 
     %orig; //  Thanks to Nepeta for the DRM
     if (!dpkgInvalid) return;
@@ -228,7 +313,7 @@ double currentAudioPosition;
     if (!dpkgInvalid) dpkgInvalid = ![[NSFileManager defaultManager] fileExistsAtPath:@"/var/lib/dpkg/info/com.jacc.wiivamp.md5sums"];
 
     if (dpkgInvalid) {
-        %init(Wiivamp13IntegrityFail);
+        %init(WiivampIntegrityFail);
         return;
     }
 
@@ -245,6 +330,12 @@ double currentAudioPosition;
     [pfs registerBool:&ENABLE_HEALTHSwitch default:YES forKey:@"ENABLE_HEALTH"];
     [pfs registerBool:&ENABLE_FMFSwitch default:YES forKey:@"ENABLE_FMF"];
     [pfs registerBool:&mainMenuMusicSwitch default:YES forKey:@"mainMenuMusic"];
+    // Allow Music While Wiivamp Plays Audio
+    [pfs registerBool:&allowMusicSwitch default:YES forKey:@"allowMusic"];
+    // Other Sounds
+    [pfs registerBool:&beginningSoundSwitch default:YES forKey:@"beginningSound"];
+    [pfs registerBool:&beginningSoundOnlyOnceSwitch default:YES forKey:@"beginningSoundOnlyOnce"];
+    [pfs registerBool:&pageScrollSoundSwitch default:YES forKey:@"pageScrollSound"];
     // Custom Volume
     [pfs registerBool:&customVolumeSwitch default:NO forKey:@"customVolume"];
     [pfs registerObject:&volumeLevel default:@"0.3" forKey:@"Volume"];
@@ -256,7 +347,7 @@ double currentAudioPosition;
         );
 
         if (ok && [@"jacc" isEqualToString:@"jacc"]) {
-            %init(Wiivamp13);
+            %init(Wiivamp);
             return;
         } else {
             dpkgInvalid = YES;

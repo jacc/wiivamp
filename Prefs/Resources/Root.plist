@@ -313,6 +313,83 @@
 			<string>com.jacc.wiiprefs/ReloadPrefs</string>
 		</dict>
 
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Allow Music To Play While Wiivamp Plays?</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.jacc.wiiprefs</string>
+			<key>key</key>
+			<string>allowMusic</string>
+			<key>label</key>
+			<string>Allow Music</string>
+			<key>PostNotification</key>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
+		</dict>
+
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Entering Wii Main Menu Sound?</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.jacc.wiiprefs</string>
+			<key>key</key>
+			<string>beginningSound</string>
+			<key>label</key>
+			<string>Entering Main Menu Theme</string>
+			<key>PostNotification</key>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.jacc.wiiprefs</string>
+			<key>key</key>
+			<string>beginningSoundOnlyOnce</string>
+			<key>label</key>
+			<string>Play Only Once</string>
+			<key>PostNotification</key>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
+		</dict>
+
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Sound When Scrolling To Next Page?</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.jacc.wiiprefs</string>
+			<key>key</key>
+			<string>pageScrollSound</string>
+			<key>label</key>
+			<string>Page Scroll Sound</string>
+			<key>PostNotification</key>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
+		</dict>
+
 	</array>
 	<key>title</key>
 	<string>Wiivamp</string>

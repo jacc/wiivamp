@@ -5,6 +5,8 @@
 #import <Cephei/HBPreferences.h>
 #import <AudioToolbox/AudioServices.h>
 
+#define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+
 // Utils
 HBPreferences *pfs;
 
@@ -23,15 +25,24 @@ BOOL ENABLE_CONTACTSSwitch = YES;
 BOOL ENABLE_HEALTHSwitch = YES;
 BOOL ENABLE_FMFSwitch = YES;
 BOOL mainMenuMusicSwitch = YES;
+BOOL beginningSoundSwitch = YES;
+BOOL beginningSoundOnlyOnceSwitch = YES;
+BOOL pageScrollSoundSwitch = YES;
 
-// Audio Players
+BOOL allowMusicSwitch = YES;
+
+// Music Players
 AVPlayer* songPlayer;
 AVPlayerLooper* songLooper;
-AVAudioPlayer *songPlayer2;
-// Custom volume
+// Main Menu Theme Player
+AVAudioPlayer* songPlayer2;
+// Player For Other Sounds
+AVAudioPlayer* songPlayer3;
+// Custom Volume
 BOOL customVolumeSwitch = NO;
 NSString* volumeLevel = @"0.3";
 
+// To Prevent Bugs
 BOOL hasPlayedApp = NO;
 BOOL hasPlayedWeather = NO;
 BOOL hasPlayedCydia = NO;
@@ -41,6 +52,7 @@ BOOL hasPlayedContacts = NO;
 BOOL hasPlayedHealth = NO;
 BOOL hasPlayedFMF = NO;
 BOOL hasPlayedHomeScreen = NO;
+BOOL hasPlayedBeginning = NO;
 
 // Interfaces
 @interface UIViewController (Wiivamp)
@@ -51,4 +63,9 @@ BOOL hasPlayedHomeScreen = NO;
 @interface SBIconController : UIViewController
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
+@end
+
+@interface SBCoverSheetPrimarySlidingViewController : UIViewController
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisppear:(BOOL)arg1;
 @end
