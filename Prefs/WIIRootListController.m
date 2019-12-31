@@ -112,9 +112,11 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    
     [super viewWillDisappear:animated];
 
     [self.navigationController.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor]}];
+
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

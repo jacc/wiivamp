@@ -16,47 +16,47 @@ NSBundle *audio = [NSBundle bundleWithPath:@"/Library/Wiivamp/"]; // Location Of
 
     }
 
-     if ([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"weatherApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_WEATHERSwitch && !hasPlayedWeather) {
+    if ([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"weatherApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_WEATHERSwitch && !hasPlayedWeather) {
          [self playSong:@"wcm" restartTime:CMTimeMake(7, 1)];
          hasPlayedWeather = YES;
 
-     }
+    }
 
-     if ([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"homebrewApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_CYDIASwitch && !hasPlayedCydia) {
+    if ([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"homebrewApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_CYDIASwitch && !hasPlayedCydia) {
         [self playSong:@"hbc" restartTime:CMTimeMake(8, 1)];
         hasPlayedCydia = YES;
 
-     }
+    }
 
-     if ([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"photoApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_PHOTOSSwitch && !hasPlayedPhotos) {
+    if ([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"photoApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_PHOTOSSwitch && !hasPlayedPhotos) {
         [self playSong:@"photos" restartTime:CMTimeMake(10, 1)];
         hasPlayedPhotos = YES;
 
-     }
+    }
 
-     if ([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"newsApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_NEWSSwitch && !hasPlayedNews) {
+    if ([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"newsApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_NEWSSwitch && !hasPlayedNews) {
          [self playSong:@"news" restartTime:CMTimeMake(11, 1)];
          hasPlayedNews = YES;
 
-     }
+    }
 
-     if ([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"contactApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_CONTACTSSwitch && !hasPlayedContacts) {
+    if ([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"contactApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_CONTACTSSwitch && !hasPlayedContacts) {
          [self playSong:@"mii" restartTime:CMTimeMake(12, 1)];
          hasPlayedContacts = YES;
 
-     }
+    }
 
-     if ([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"healthApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_HEALTHSwitch && !hasPlayedHealth) {
+    if ([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"healthApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_HEALTHSwitch && !hasPlayedHealth) {
          [self playSong:@"yoga" restartTime:CMTimeMake(13, 1)];
          hasPlayedHealth = YES;
 
-     }
+    }
 
-     if ([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"friendsApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_FMFSwitch && !hasPlayedFMF) {
+    if ([SparkAppList doesIdentifier:@"com.jacc.wiiprefs" andKey:@"friendsApp" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] && ENABLE_FMFSwitch && !hasPlayedFMF) {
          [self playSong:@"checkmii" restartTime:CMTimeMake(14, 1)];
          hasPlayedFMF = YES;
 
-     }
+    }
 
 }
     // Method To Play And Pause The Songs
