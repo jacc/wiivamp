@@ -68,7 +68,6 @@
 			<key>action</key>
 			<string>selectStoreApps</string>
 		</dict>
-
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
@@ -97,7 +96,6 @@
 			<key>action</key>
 			<string>selectHomeBrewApps</string>
 		</dict>
-
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
@@ -126,7 +124,6 @@
 			<key>action</key>
 			<string>selectWeatherApps</string>
 		</dict>
-
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
@@ -155,7 +152,6 @@
 			<key>action</key>
 			<string>selectPhotoApps</string>
 		</dict>
-
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
@@ -184,7 +180,6 @@
 			<key>action</key>
 			<string>selectNewsApps</string>
 		</dict>
-		
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
@@ -213,7 +208,6 @@
 			<key>action</key>
 			<string>selectContactApps</string>
 		</dict>
-
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
@@ -242,7 +236,6 @@
 			<key>action</key>
 			<string>selectHealthApps</string>
 		</dict>
-
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>

@@ -1,8 +1,8 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
-#import <SparkAppList.h>
 #import <Cephei/HBPreferences.h>
+#import <SparkAppList.h>
 
 #define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
