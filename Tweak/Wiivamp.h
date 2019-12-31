@@ -3,7 +3,6 @@
 #import <AVFoundation/AVFoundation.h>
 #import <SparkAppList.h>
 #import <Cephei/HBPreferences.h>
-#import <AudioToolbox/AudioServices.h>
 
 #define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
@@ -30,6 +29,7 @@ BOOL beginningSoundOnlyOnceSwitch = YES;
 BOOL pageScrollSoundSwitch = YES;
 
 BOOL allowMusicSwitch = YES;
+BOOL dontUsePlayerForSwipeSwitch = NO;
 
 // Music Players
 AVPlayer* songPlayer;

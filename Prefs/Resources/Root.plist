@@ -389,6 +389,20 @@
 			<key>PostNotification</key>
 			<string>com.jacc.wiiprefs/ReloadPrefs</string>
 		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.jacc.wiiprefs</string>
+			<key>key</key>
+			<string>dontUsePlayerForSwipe</string>
+			<key>label</key>
+			<string>Don't Use Player (Reduce Lag)</string>
+			<key>PostNotification</key>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
+		</dict>
 
 	</array>
 	<key>title</key>

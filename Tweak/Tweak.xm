@@ -1,5 +1,4 @@
 #import "Wiivamp.h"
-#import <AudioToolbox/AudioServices.h>
 
 NSBundle *audio = [NSBundle bundleWithPath:@"/Library/Wiivamp/"]; // Location Of The Songs
 
@@ -235,10 +234,16 @@ double currentAudioPosition;
 - (void)scrollViewWillBeginDragging:(id)arg1 {
 
 	%orig;
-    if (pageScrollSoundSwitch) {
+    if (pageScrollSoundSwitch && !dontUsePlayerForSwipeSwitch) {
         songPlayer3 = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:@"/Library/Wiivamp/pageScroll.m4a"] error:nil];
         songPlayer3.numberOfLoops = 0;
         [songPlayer3 play];
+
+    } else if (pageScrollSoundSwitch && dontUsePlayerForSwipeSwitch) {
+        SystemSoundID sound = 0;
+        AudioServicesDisposeSystemSoundID(sound);
+        AudioServicesCreateSystemSoundID((CFURLRef) CFBridgingRetain([NSURL fileURLWithPath:@"/Library/Wiivamp/pageScroll.m4a"]), &sound);
+        AudioServicesPlaySystemSound((SystemSoundID)sound);
 
     }
 
@@ -336,6 +341,7 @@ double currentAudioPosition;
     [pfs registerBool:&beginningSoundSwitch default:YES forKey:@"beginningSound"];
     [pfs registerBool:&beginningSoundOnlyOnceSwitch default:YES forKey:@"beginningSoundOnlyOnce"];
     [pfs registerBool:&pageScrollSoundSwitch default:YES forKey:@"pageScrollSound"];
+    [pfs registerBool:&dontUsePlayerForSwipeSwitch default:NO forKey:@"dontUsePlayerForSwipe"];
     // Custom Volume
     [pfs registerBool:&customVolumeSwitch default:NO forKey:@"customVolume"];
     [pfs registerObject:&volumeLevel default:@"0.3" forKey:@"Volume"];

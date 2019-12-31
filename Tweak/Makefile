@@ -7,7 +7,7 @@ include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = Wiivamp
 $(TWEAK_NAME)_FILES = Tweak.xm
-$(TWEAK_NAME)_FRAMEWORKS = UIKit Foundation
+$(TWEAK_NAME)_FRAMEWORKS = UIKit Foundation AVFoundation
 $(TWEAK_NAME)_LIBRARIES = sparkapplist
 $(TWEAK_NAME)_EXTRA_FRAMEWORKS += Cephei
 
