@@ -3,7 +3,6 @@
 # Wiivamp
 🎼 Play the classic Wii channel music inside your favorite apps on iOS and tvOS!
 
-
 ## Contributors
 
 - [jacc](https://lafond.dev) - original developer
@@ -12,8 +11,4 @@
 ## Compiling
 
 If you have Theos installed, a simple `make package` should make the package. All files are included.
-
-## FAQ
-
-### What is the 'yeet' folder?
-Preferences. When Chips and I were originally making it, I named it `yeet` as a joke, not realizing that I was eventually going to release and open source this. I'm much too lazy to rework it with a proper preference name.
+Also make sure to have libsparkapplist installed in your theos directory.

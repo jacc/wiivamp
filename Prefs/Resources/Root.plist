@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.jacc.wiiprefs</string>
+			<key>key</key>
+			<string>Enabled</string>
+			<key>label</key>
+			<string>Enabled (Respring required)</string>
+			<key>PostNotification</key>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
+		</dict>
+		
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Main Menu Theme On HomeScreen?</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.jacc.wiiprefs</string>
+			<key>key</key>
+			<string>mainMenuMusic</string>
+			<key>label</key>
+			<string>Enable Main Menu Theme</string>
+			<key>PostNotification</key>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Wii Store Theme</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.jacc.wiiprefs</string>
+			<key>key</key>
+			<string>ENABLE_APPSTORE</string>
+			<key>label</key>
+			<string>Enable Wii Store Theme</string>
+			<key>PostNotification</key>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Enable In Apps</string>
+			<key>action</key>
+			<string>selectStoreApps</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Homebrew Theme</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.jacc.wiiprefs</string>
+			<key>key</key>
+			<string>ENABLE_CYDIA</string>
+			<key>label</key>
+			<string>Enable Homebrew Theme</string>
+			<key>PostNotification</key>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Enable In Apps</string>
+			<key>action</key>
+			<string>selectHomeBrewApps</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Weather Theme</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.jacc.wiiprefs</string>
+			<key>key</key>
+			<string>ENABLE_WEATHER</string>
+			<key>label</key>
+			<string>Enable Weather Theme</string>
+			<key>PostNotification</key>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Enable In Apps</string>
+			<key>action</key>
+			<string>selectWeatherApps</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Photos Theme</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.jacc.wiiprefs</string>
+			<key>key</key>
+			<string>ENABLE_PHOTOS</string>
+			<key>label</key>
+			<string>Enable Photos Theme</string>
+			<key>PostNotification</key>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Enable In Apps</string>
+			<key>action</key>
+			<string>selectPhotoApps</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>News Theme</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.jacc.wiiprefs</string>
+			<key>key</key>
+			<string>ENABLE_NEWS</string>
+			<key>label</key>
+			<string>Enable News Theme</string>
+			<key>PostNotification</key>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Enable In Apps</string>
+			<key>action</key>
+			<string>selectNewsApps</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Contacts Theme</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.jacc.wiiprefs</string>
+			<key>key</key>
+			<string>ENABLE_CONTACTS</string>
+			<key>label</key>
+			<string>Enable Contacts Theme</string>
+			<key>PostNotification</key>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Enable In Apps</string>
+			<key>action</key>
+			<string>selectContactApps</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Health Theme</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.jacc.wiiprefs</string>
+			<key>key</key>
+			<string>ENABLE_HEALTH</string>
+			<key>label</key>
+			<string>Enable Health Theme</string>
+			<key>PostNotification</key>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Enable In Apps</string>
+			<key>action</key>
+			<string>selectHealthApps</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Mii Theme</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.jacc.wiiprefs</string>
+			<key>key</key>
+			<string>ENABLE_FMF</string>
+			<key>label</key>
+			<string>Enable Mii Theme</string>
+			<key>PostNotification</key>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Enable In Apps</string>
+			<key>action</key>
+			<string>selectFriendsApps</string>
+		</dict>
+
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Custom Volume Level?</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.jacc.wiiprefs</string>
+			<key>key</key>
+			<string>customVolume</string>
+			<key>label</key>
+			<string>Custom Volume</string>
+			<key>PostNotification</key>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>default</key>
+			<real>0.3</real>
+			<key>defaults</key>
+			<string>com.jacc.wiiprefs</string>
+			<key>key</key>
+			<string>Volume</string>
+			<key>min</key>
+			<real>0.0</real>
+			<key>max</key>
+			<real>1.0</real>
+			<key>showValue</key>
+			<true/>
+			<key>isSegmented</key>
+			<false/>
+			<key>PostNotification</key>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
+		</dict>
+
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Allow Music To Play While Wiivamp Plays?</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.jacc.wiiprefs</string>
+			<key>key</key>
+			<string>allowMusic</string>
+			<key>label</key>
+			<string>Allow Music</string>
+			<key>PostNotification</key>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
+		</dict>
+
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Entering Wii Main Menu Sound?</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.jacc.wiiprefs</string>
+			<key>key</key>
+			<string>beginningSound</string>
+			<key>label</key>
+			<string>Entering Main Menu Theme</string>
+			<key>PostNotification</key>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.jacc.wiiprefs</string>
+			<key>key</key>
+			<string>beginningSoundOnlyOnce</string>
+			<key>label</key>
+			<string>Play Only Once</string>
+			<key>PostNotification</key>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
+		</dict>
+
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Sound When Scrolling To Next Page?</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.jacc.wiiprefs</string>
+			<key>key</key>
+			<string>pageScrollSound</string>
+			<key>label</key>
+			<string>Page Scroll Sound</string>
+			<key>PostNotification</key>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.jacc.wiiprefs</string>
+			<key>key</key>
+			<string>dontUsePlayerForSwipe</string>
+			<key>label</key>
+			<string>Don't Use Player (Reduce Lag)</string>
+			<key>PostNotification</key>
+			<string>com.jacc.wiiprefs/ReloadPrefs</string>
+		</dict>
+
+	</array>
+	<key>title</key>
+	<string>Wiivamp</string>
+</dict>
+</plist>
