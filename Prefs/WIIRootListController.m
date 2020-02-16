@@ -8,7 +8,7 @@
     if (self) {
         WIIAppearanceSettings *appearanceSettings = [[WIIAppearanceSettings alloc] init];
         self.hb_appearanceSettings = appearanceSettings;
-        self.respringButton = [[UIBarButtonItem alloc] initWithTitle:@"ReSpring"
+        self.respringButton = [[UIBarButtonItem alloc] initWithTitle:@"Respring"
                                     style:UIBarButtonItemStylePlain
                                     target:self
                                     action:@selector(respring)];
