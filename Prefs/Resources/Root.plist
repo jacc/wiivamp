@@ -4,6 +4,32 @@
 <dict>
 	<key>items</key>
 	<array>
+		<dict>
+			<key>cellClass</key>
+			<string>HBTwitterCell</string>
+			<key>label</key>
+			<string>jcks</string>
+			<key>user</key>
+			<string>whojcks</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBTwitterCell</string>
+			<key>label</key>
+			<string>Litten</string>
+			<key>user</key>
+			<string>Litteeen</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
+			<key>label</key>
+			<string>GitHub</string>
+			<key>subtitle</key>
+			<string>Wiivamp is fully OSS!</string>
+			<key>url</key>
+			<string>http://github.com/jacc/wiivamp</string>
+		</dict>
 
 		<dict>
 			<key>cell</key>
