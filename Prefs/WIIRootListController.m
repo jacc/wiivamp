@@ -212,7 +212,7 @@
 
 - (void)respring {
 	UIAlertController *respring = [UIAlertController alertControllerWithTitle:@"Wiivamp"
-													 message:@"Do you really want to ReSpring?"
+													 message:@"Do you really want to respring?"
 													 preferredStyle:UIAlertControllerStyleAlert];
 	UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action) {
 			[self respringUtil];
