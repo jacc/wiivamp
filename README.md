@@ -1,4 +1,4 @@
-![banner](https://github.com/jacc/wiivamp/blob/master/assets/Wiivamp%204.0%20Banner.png?raw=true)
+![banner](https://github.com/jacc/wiivamp/raw/master/Prefs/Resources/Banner.png)
 
 # Wiivamp
 🎼 Play the classic Wii channel music inside your favorite apps on iOS and tvOS!
@@ -7,6 +7,7 @@
 
 - [jacc](https://lafond.dev) - original developer
 - [Diatrus](https://diatr.us) - wrote entire tvOS port, improved audio player for iOS and tvOS.
+- [Litten](https://twitter.com/litteeen) - improved code for iOS 12/13, patched multiple bugs, added new features
 
 ## Compiling
 
