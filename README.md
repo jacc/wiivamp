@@ -1,4 +1,4 @@
-![banner](https://github.com/jacc/wiivamp/raw/master/Prefs/Resources/Banner.png)
+![banner](https://github.com/jacc/wiivamp/raw/master/Prefs/Resources/banner.png)
 
 # Wiivamp
 🎼 Play the classic Wii channel music inside your favorite apps on iOS and tvOS!
